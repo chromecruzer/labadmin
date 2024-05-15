@@ -34,6 +34,6 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "chromecruze-labadmin-38"
-          entrypoint: "denokv/main.ts"
+          project: "chromecruze-labadmin-45"
+          entrypoint: "main.ts"
           root: ""
