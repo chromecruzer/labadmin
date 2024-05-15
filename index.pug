@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    title Form
+    meta(charset="UTF-8")
+    link(rel="icon", type="image/svg+xml", href="https://tomalcala.com/images/glitchy-deno.jpg")
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+  body
+    .container
+      h1 User Form
+      form(action="/submit" method="post" class="mt-4")
+        div(class="form-group")
+          label(for="name") Name:
+          input(type="text" name="name" class="form-control" required)
+        div(class="form-group")
+          label(for="gender") Gender:
+          input(type="text" name="gender" class="form-control" required)
+        div(class="form-group")
+          label(for="experience") Years of Experience:
+          input(type="number" name="experience" class="form-control" required)
+        div
+          button(type="submit" class="btn btn-primary") Submit
+      h1 Users
+      .container.mt-4
+        each user in users
+          p= `Name: ${user.name}, Gender: ${user.gender}, Experience: ${user.experience} years`
+
+    .toast-container(position="top-end" style="position: fixed; top: 1rem; right: 1rem;")
+      .toast(id="submitToast" role="alert" aria-live="assertive" aria-atomic="true")
+        .toast-header
+          strong(class="mr-auto") Notification
+          small(class="text-muted") Just now
+          button(type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close")
+            span(aria-hidden="true") &times;
+        .toast-body
+          | Form submitted successfully!
+
+    script.
+      $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('submitted')) {
+          $('#submitToast').toast('show');
+        }
+      });
