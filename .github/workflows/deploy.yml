@@ -35,5 +35,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "chromecruze-labadmin-45"
-          entrypoint: "main.ts"
+          entrypoint: "labadmin/main.ts"
           root: ""
