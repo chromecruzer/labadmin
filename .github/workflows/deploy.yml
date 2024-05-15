@@ -29,11 +29,11 @@ jobs:
           node-version: lts/*
 
       - name: Install step
-        run: "deno task dev"
+        run: "DENO_KV_ACCESS_TOKEN=ddp_Q8ByZuZLvVgehN193AMVbsMKDNtbvS35K8x6"
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "sowmi"
-          entrypoint: "deno task dev"
+          project: "chromecruze-labadmin-38"
+          entrypoint: "denokv/main.ts"
           root: ""
